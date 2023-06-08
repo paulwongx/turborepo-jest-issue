@@ -5,7 +5,9 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "clean": "turbo clean",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "git": "git add . && git commit -m",
+		"postgit": "git push --all"
   },
   "devDependencies": {
     "eslint": "^7.32.0",
