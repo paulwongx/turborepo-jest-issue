@@ -15,7 +15,7 @@
 
 ### Expected behavior
 
-I expect to have the test pass
+I expect to have the test compile, run and pass
 
 ### Actual behavior
 ```js
