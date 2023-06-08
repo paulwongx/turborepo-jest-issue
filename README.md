@@ -49,3 +49,53 @@ System:
     Yarn: 1.22.18 - /usr/local/bin/yarn
     npm: 8.5.0 - /usr/local/bin/npm
 ```
+
+### jest.config.ts
+```js
+import type {Config} from 'jest';
+import path from 'path';
+
+const config: Config = {
+  testEnvironment: 'jsdom',
+  transform: {
+    '^.+\\.(js|jsx)$': 'babel-jest',
+    '^.+\\.(ts|tsx)$': 'ts-jest',
+  },
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  "transformIgnorePatterns": [
+    `${path.join(process.cwd(), "../..")}/node_modules/(?!(oauth4webapi))`,
+  ],
+};
+
+export default config;
+
+```
+
+## .babelrc
+```js
+{
+  "env": {
+    "test": {
+      "plugins": ["@babel/plugin-transform-modules-commonjs"]
+    }
+  }
+}
+```
+
+### example.ts
+```js
+import * as o from "oauth4webapi";
+
+export const value = o.skipStateCheck;
+```
+
+### example.spec.ts
+```js
+import {value} from "./example";
+
+describe("example", () => {
+  it("should be true", () => {
+    expect(value).toBe(true);
+  });
+});
+```
