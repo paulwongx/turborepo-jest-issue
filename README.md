@@ -1,7 +1,7 @@
 # Turborepo / Jest - Unable to transpile external ESM package
 
 ### Issue
-- Unable to transpile external package exported in ESM syntax
+Unable to transpile external package exported in ESM syntax
 
 ### Jest Version
 
