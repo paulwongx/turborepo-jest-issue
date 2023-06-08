@@ -21,7 +21,7 @@ I expect to have the test compile, run and pass
 Jest encounters an unexpected token (see below)
 
 ```js
-
+`Jest encountered an unexpected token`
     /Users/.../turborepo_jest_issue/node_modules/oauth4webapi/build/index.js:7
     export const clockSkew = Symbol();
     ^^^^^^
