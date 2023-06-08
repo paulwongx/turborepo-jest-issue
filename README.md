@@ -1,4 +1,4 @@
-# Turborepo / Jest / External ESM Package Testing Issue
+# Turborepo / Jest - Unable to transpile external ESM package
 
 ### Issue
 - Unable to transpile external package exported in ESM syntax
