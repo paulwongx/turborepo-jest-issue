@@ -1,51 +1,71 @@
-# Turborepo Tailwind CSS starter
+# Minimal reproducible repo for jest-testing in turborepo for external esm packages using yarn
 
-This is an official starter Turborepo.
+## Notes
+- The package to test is in `./packages/jest-issue`
+- `oauth4webapi` is an external package that has a build file that is esm only
+  - That is, it's using `export const XXX` in a `.js` file, so it needs to be converted to commonjs `require()` syntax to be recognized in jest
 
-## Using this example
+## Getting Started
+1. Stay in the root of the repo
+2. Install packages for `jest-issue`
+```cli
+yarn workspace jest-issue install
+```
+3. Try running the test file `./packages/jest-issue/example.spec.ts`
+```cli
+yarn workspace jest-issue test example
 
-Run the following command:
-
-```sh
-npx create-turbo@latest -e with-tailwind
+// Runs `jest --nocache example`
 ```
 
-## What's inside?
+## Misc
+- To get the current jest config
+```cli
+yarn workspace jest-issue jest --showConfig
+```
 
-This Turborepo includes the following packages/apps:
+## Issues
+- `@babel/plugin-transform-modules-commonjs` in `.babelrc` isn't working to convert the esm exports in the external package build file
+- `transformIgnorePatterns` in `jest.config.ts` isn't working to transform the external package
 
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app with [Tailwind CSS](https://tailwindcss.com/)
-- `web`: another [Next.js](https://nextjs.org/) app with [Tailwind CSS](https://tailwindcss.com/)
-- `ui`: a stub React component library with [Tailwind CSS](https://tailwindcss.com/) shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Building packages/ui
-
-This example is setup to build `packages/ui` and output the transpiled source and compiled styles to `dist/`. This was chosen to make sharing one `tailwind.config.js` as easy as possible, and to ensure only the CSS that is used by the current application and its dependencies is generated.
-
-Another option is to consume `packages/ui` directly from source without building. If using this option, you will need to update your `tailwind.config.js` to be aware of your package locations, so it can find all usages of the `tailwindcss` class names.
-
-For example, in [tailwind.config.js](packages/tailwind-config/tailwind.config.js):
+## Error
+- When running `yarn workspace jest-issue test example`
 
 ```js
-  content: [
-    // app content
-    `src/**/*.{js,ts,jsx,tsx}`,
-    // include packages if not transpiling
-    "../../packages/**/*.{js,ts,jsx,tsx}",
-  ],
+Jest encountered an unexpected token
+
+Jest failed to parse a file. This happens e.g. when your code or its dependencies use non-standard JavaScript syntax, or when Jest is not configured to support such syntax.
+
+Out of the box Jest supports Babel, which will be used to transform your files into valid JS based on your Babel configuration.
+
+By default "node_modules" folder is ignored by transformers.
+
+Here's what you can do:
+  • If you are trying to use ECMAScript Modules, see https://jestjs.io/docs/ecmascript-modules for how to enable it.
+  • If you are trying to use TypeScript, see https://jestjs.io/docs/getting-started#using-typescript
+  • To have some of your "node_modules" files transformed, you can specify a custom "transformIgnorePatterns" in your config.
+  • If you need a custom transformation specify a "transform" option in your config.
+  • If you simply want to mock your non-JS modules (e.g. binary assets) you can stub them out with the "moduleNameMapper" config option.
+
+You'll find more details and examples of these config options in the docs:
+https://jestjs.io/docs/configuration
+For information about custom transformations, see:
+https://jestjs.io/docs/code-transformation
+
+Details:
+
+/Users/(...)/turborepo_jest_issue/node_modules/oauth4webapi/build/index.js:7
+export const clockSkew = Symbol();
+^^^^^^
+
+SyntaxError: Unexpected token 'export'
+
+> 1 | import * as o from "oauth4webapi";
+    | ^
+  2 |
+  3 | export const value = o.skipStateCheck;
+
+  at Runtime.createScriptFromCode (../../node_modules/jest-runtime/build/index.js:1495:14)
+  at Object.<anonymous> (example.ts:1:1)
+  at Object.<anonymous> (example.spec.ts:1:1)
 ```
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [Tailwind CSS](https://tailwindcss.com/) for styles
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting

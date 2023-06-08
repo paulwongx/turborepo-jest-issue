@@ -1,0 +1,28 @@
+{
+  "name": "jest-issue",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "test": "jest --no-cache"
+  },
+  "dependencies": {
+    "oauth4webapi": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.21.5",
+    "@babel/preset-env": "^7.22.4",
+    "@types/jest": "^29.5.2",
+    "@types/node": "^20.2.5",
+    "babel-jest": "^29.5.0",
+    "eslint-config-custom": "*",
+    "jest": "^29.5.0",
+    "jest-config": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0",
+    "jest-fetch-mock": "^3.0.3",
+    "ts-jest": "^29.1.0",
+    "ts-node": "^10.9.1",
+    "tsconfig": "*",
+    "typescript": "^4.9.5"
+  }
+}

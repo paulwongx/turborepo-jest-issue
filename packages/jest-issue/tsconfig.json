@@ -1,0 +1,13 @@
+{
+	"extends": "tsconfig/base.json",
+	"compilerOptions": {
+    "target": "es6",
+    "module": "ESNext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+		"paths": {
+      "@/*": ["./*"]
+		},
+	},
+  "include": ["**/*.ts"],
+  "exclude": ["dist", "build", "node_modules"],
+}
