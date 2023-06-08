@@ -3,7 +3,7 @@
 ### Issue
 - Unable to transpile external package exported in ESM syntax
 
-### Version
+### Jest Version
 
 29.5.0
 
