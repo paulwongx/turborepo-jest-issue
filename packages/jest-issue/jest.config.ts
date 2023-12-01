@@ -2,11 +2,12 @@ import type {Config} from 'jest';
 import path from 'path';
 
 const config: Config = {
-  testEnvironment: 'jsdom',
-  transform: {
-    '^.+\\.(js|jsx)$': 'babel-jest',
-    '^.+\\.(ts|tsx)$': 'ts-jest',
-  },
+  testEnvironment: 'jest-environment-node',
+  // transform: {
+  //   '^.+\\.(js|jsx)$': 'babel-jest',
+  //   '^.+\\.(ts|tsx)$': 'ts-jest',
+  // },
+  transform: {},
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   "transformIgnorePatterns": [
     `${path.join(process.cwd(), "../..")}/node_modules/(?!(oauth4webapi))`,

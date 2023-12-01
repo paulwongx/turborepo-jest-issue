@@ -15,7 +15,7 @@ Unable to transpile external package exported in ESM syntax
 
 ### Expected behavior
 
-I expect to have the test compile, run and pass
+I expect the test to compile, run and pass
 
 ### Actual behavior
 Jest encounters an unexpected token (see below)
